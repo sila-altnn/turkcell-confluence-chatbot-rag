@@ -1,0 +1,57 @@
+📚 RAG Tabanlı Markdown Chatbot Projesi Başarıyla Oluşturuldu!
+
+✅ Proje Yapısı:
+├── app.py                      # 💬 Streamlit Chatbot Arayüzü
+├── test_rag.py                 # 🧪 Test Script
+├── requirements.txt            # 📦 Python Paketleri
+├── .env.example               # 🔐 Environment Şablonu
+├── SETUP_GUIDE.md             # 📖 Detaylı Kurulum Rehberi
+├── src/
+│   ├── config.py              # ⚙️  Konfigürasyon
+│   ├── document_processor.py  # 📄 Markdown İşleme
+│   ├── chunking.py            # ✂️  Text Bölme
+│   ├── vector_db.py           # 🗄️  ChromaDB
+│   ├── rag_chain.py           # 🤖 RAG Pipeline
+│   └── create_vector_db.py    # 🔨 DB Oluşturma
+├── documents/                 # 📑 Markdown Dosyaları
+│   └── turkcell_intro.md     # (Örnek)
+└── data/                      # 💾 Vektör DB (üretilecek)
+
+🚀 HIZLI BAŞLANGIC:
+
+1️⃣  Sanal ortam oluştur:
+   python -m venv venv
+   venv\Scripts\activate
+
+2️⃣  Paketleri yükle:
+   pip install -r requirements.txt
+
+3️⃣  .env dosyası oluştur (OpenAI API anahtarı ekle):
+   OPENAI_API_KEY=sk-your-api-key-here
+   (bkz: .env.example)
+
+4️⃣  Vektör veritabanını oluştur:
+   python src/create_vector_db.py
+
+5️⃣  Chatbot'u başlat:
+   streamlit run app.py
+
+📝 Kendi Markdown Dosyalarını Ekle:
+   documents/ klasörüne .md dosyaları koy
+   Sonra adım 4'ü tekrarla
+
+🔍 Test et:
+   python test_rag.py
+
+📚 Detaylı bilgi için: SETUP_GUIDE.md dosyasını aç
+
+🎯 Sistem Özellikleri:
+✓ Markdown dosya yükleme ve işleme
+✓ Akıllı text chunking
+✓ ChromaDB vektör veritabanı
+✓ OpenAI GPT entegrasyonu
+✓ RAG destekli soru-cevap
+✓ Streamlit interaktif arayüz
+✓ Kaynak takibi
+
+⚡ Başarılar! 🚀

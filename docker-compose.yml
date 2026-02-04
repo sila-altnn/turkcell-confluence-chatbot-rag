@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  chroma:
+    build:
+      context: ./docker/chroma
+      dockerfile: Dockerfile
+    container_name: chroma-db
+    ports:
+      - "9191:8000"
+    volumes:
+      - chroma-data:/chroma/data
+    environment:
+      - ANONYMIZED_TELEMETRY=False
+    networks:
+      - rag-network
+
+  ollama:
+    build:
+      context: ./docker/ollama
+      dockerfile: Dockerfile
+    container_name: ollama-llm
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    networks:
+      - rag-network
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    container_name: rag-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./documents:/app/documents
+      - ./src:/app/src
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHROMA_DB_URL=http://chroma:9191
+      - MODEL_NAME=mistral
+      - EMBEDDING_MODEL=nomic-embed-text
+      - DOCUMENTS_PATH=./documents
+    depends_on:
+      - chroma
+      - ollama
+    networks:
+      - rag-network
+    # GPU desteği için (isteğe bağlı)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  chroma-data:
+    driver: local
+  ollama-data:
+    driver: local
+
+networks:
+  rag-network:
+    driver: bridge
