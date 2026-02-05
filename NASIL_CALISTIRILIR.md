@@ -11,7 +11,7 @@ Bu projeyi çalıştırmanın **iki farklı yolu** vardır:
 
 ---
 
-## 🐳 YÖNTEm 1: DOCKER İLE ÇALIŞTIRMA (ÖNERİLİR)
+## 🐳 YÖNTEM 1: DOCKER İLE ÇALIŞTIRMA (ÖNERİLİR)
 
 Bu yöntem Ollama kullanır (ücretsiz, lokal LLM).
 

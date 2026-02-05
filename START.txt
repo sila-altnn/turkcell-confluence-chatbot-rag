@@ -52,7 +52,9 @@
 
 📝 Kendi Markdown Dosyalarını Ekle:
    documents/ klasörüne .md dosyaları koy
-   Sonra adım 3'ü tekrarla (veritabanı oluştur)
+   
+   Docker için: Adım 4'ü tekrarla (veritabanı oluştur)
+   Python için: Adım 4'ü tekrarla (veritabanı oluştur)
 
 🔍 Test et:
    python test_rag.py
